@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>钻井一体化服务-辽宁陆海石油</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/grid12.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/procenter.css">
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/introduce.js"></script>
+    <style type="text/css">
+    .channel_main { margin-bottom: 40px; }
+.channel_content {clear: both; min-height: 300px;}
+/*news_list*/
+.channel_left { width: 70%; float: left; }
+.channel_right { width: 26%; float: right; }
+
+.topNews {clear: both;overflow: hidden; margin-bottom: 20px;}
+.topNews ._img { width:43%; height: 0; float: right;overflow: hidden; padding-bottom: 28%; margin-left: 2%;}
+.topNews ._intro { margin-right: 45%; }
+.topNews ._time { font-size: 24px; color: #0082d8; font-weight: bold; line-height: 1.2; margin-bottom: 5px;}
+.topNews ._title { font-size: 18px; line-height: 1.5em; height: 3em; overflow: hidden; margin-bottom: 5px;}
+.topNews ._text { line-height: 24px; color: #888; margin-bottom: 10px;}
+.topNews ._more { display:block; height: 40px; line-height: 40px; border: #f9802f 2px solid; border-radius: 2px; font-size: 17px; text-align: center; color: #f86c0f; }
+
+.news_list { border-top: #cccccc 1px dotted; padding-top: 20px;}
+.news_list li { border-bottom: #e8e6e6 1px solid; padding-bottom: 25px; margin-bottom: 25px;}
+
+.news_list ._time { width: 65px; height: 65px; float: left; padding: 10px; background-color: #e1e1e1; color: #0082d8; font-size: 24px; font-weight: bold; font-family: Arial; line-height: 1.2; margin-right: 15px;}
+.news_list ._year { display: block; font-weight: normal; font-size: 18px; color: #4c4c4c; padding-top: 20px;}
+.news_list ._t { height: 30px; line-height: 30px; font-size: 18px; margin-bottom: 5px; white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+.news_list ._text { line-height: 1.9em; }
+
+.short_paging { clear: both; text-align: right;}
+.short_paging ._more,.com_btn,.honor_tab_hd li { display: inline-block; height:40px; line-height: 40px; font-size: 16px; color: #fff; background-color: #f86c0f; border-bottom: #8c3800 3px solid; padding: 0 50px; white-space: nowrap; cursor: pointer; -webkit-transition: all 0.3s ease; transition: all 0.3s ease; color: #ffffff;}
+.short_paging ._more:hover,.com_btn:hover { filter:alpha(opacity=90); opacity:0.9;}
+
+/*新闻检索*/
+.select-ui-choose{display: inline-block;position: relative;vertical-align: middle;
+    background: #fff;border: 1px solid #aaa;cursor: pointer;height: 2em;
+    user-select: none;-webkit-user-select: none;overflow: hidden; border-radius: 4px;}
+.select-ui-choose-top.on{border-radius: 0 0 4px 4px;}
+.select-ui-choose-bottom.on{border-radius: 4px 4px 0 0;}
+.select-ui-choose ._txt{display: block;padding-left: 8px;padding-right: 20px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap; }
+.select-ui-choose ._arrow{height: 100%;position: absolute;top: 0;right: 0;width: 1em;}
+.select-ui-choose ._arrow .arr{position: absolute;border:.3em solid;left: 50%;top:50%;
+border-color:#333 transparent transparent transparent;margin:-0.15em 0 0 -0.3em;}
+.select-ui-choose.on ._arrow .arr{border-color: transparent transparent #333 transparent;
+margin-top: -0.5em;}
+.select-ui-options{position: absolute; border:1px solid #aaa;background:#fff;overflow: auto;
+max-height: 12em;display: none;z-index: 99;}
+.select-ui-options li{display: block;padding:6px;line-height: 1.8em;cursor: pointer;}
+.select-ui-options li._disabled{color:#aaa;cursor: default;}
+.select-ui-options li._selected{background:#eee;}
+.select-ui-options li:hover{background:#01a2ea;color:#fff;}
+.select-ui-options li._disabled:hover{background:inherit;color:#aaa;}
+.select-ui-options li._selected:hover{background:#eee;color:inherit;}
+.select-ui-options-top{border-radius: 4px 4px 0 0;border-bottom: 0;}
+.select-ui-options-bottom{border-radius: 0 0 4px 4px;border-top:0;}
+
+.inewsSearch { padding:20px; background-color:#f2f2f2;}
+.inewsSearch .sec_hd { margin-bottom:15px; line-height:32px;}
+.inewsSearch .sec_hd .n { font-size:24px; font-weight:normal; color:#333;}
+.inewsSearch .sec_bd .nselect { margin-bottom:15px; height:40px; overflow:hidden; position:relative;}
+.inewsSearch .sec_bd .nselect .ms { position:absolute; left:7px; top:50%; margin-top: -7px; z-index:10; height: 14px; line-height: 14px;}
+.nselect .c_select { display:block; width:auto; border:#ddd 1px solid; background-color:#dedede; height:38px; line-height:38px; border-radius:0!important;}
+.nselect .c_select ._txt { padding-right:36px; padding-left:20px;}
+.nselect .c_select ._arrow { width:36px; background-color:#01a2ea;}
+.nselect .c_select ._arrow .arr { margin-left:-0.2em; border-top-color:#fff; left: 50%;}
+.nselect .c_select.on ._arrow .arr { border-bottom-color:#fff; border-top-color: transparent;}
+.select-ui-options-ncb { border-color:#ddd!important;}
+.select-ui-options-ncb ._disabled { display:none;}
+
+.nInput { display:block; height:38px; line-height:35px; border:#ddd 1px solid; padding:0 20px; overflow:hidden; margin-bottom:15px;}
+.nInput input { width:100%; height:20px; line-height:20px; vertical-align:middle; border-width:0; font-family:"Microsoft Yahei"; background-color: #f2f2f2;}
+.nBtn { overflow:hidden;}
+.nBtn a { display:block; text-align: center; color: #fff;}
+.inewsSearch .sec_bd .month { width:47%; float:left;}
+.inewsSearch .sec_bd .day { width:47%; float:right;}
+.channel_right .nInput { clear:both;}
+</style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <a name="top"></a>
+    <header class="pageHeader">
+        <div class="topBar">
+            <div class="wrap fix">
+                <div class="searchBox" method='get'>
+                    <form action="#">
+                        <div class="_input">
+                            <input type="text" name='keywords' placeholder="搜索内容...">
+                        </div>
+                    </form>
+                </div>
+                <div class="search">
+                    <a href="#" class="_btn">
+                        <i class="iconfont">&#xe605;</i>
+                    </a>
+                </div>
+                <div class="links">
+                    <a href="#">English</a>
+                </div>
+            </div>
+        </div>
+        <div class="top">
+            <div class="wrap fix">
+                <div class="logo">
+                    <a href="/"><img src="images/logo.png" alt="辽宁陆海石油装备研究院有限公司"></a>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="introduce.html">企业介绍</a></li>
+                        <li><a href="design.html">研发设计</a></li>
+                        <li><a href="productcenter.html">产品中心</a></li>
+                        <li><a href="service.html" >工程技术服务</a></li>
+                        <li><a href="newscenter.html"class="now">资讯中心</a></li>
+                        <li><a href="humanresource.html">人力资源</a></li>
+                        <li><a href="gcpj.html">工程备件</a></li>
+                    </ul>
+                </nav>
+                <a href="#">
+                    <div class="iconfont biao" >&#xe602;</div>
+                </a>
+                <div class="ceNav">
+                   <ul>
+                        <li><a href="introduce.html">企业介绍</a></li>
+                        <li><a href="design.html">研发设计</a></li>
+                        <li><a href="productcenter.html">产品中心</a></li>
+                        <li><a href="service.html">工程技术服务</a></li>
+                        <li><a href="newscenter.html">资讯中心</a></li>
+                        <li><a href="humanresource.html">人力资源</a></li>
+                        <li><a href="gcpj.html">工程备件</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- 内容 -->
+    <section class="li1">
+        <div class="wrap">
+            <a href="index.html">首页</a>
+            <span> > 资讯中心</span>
+        </div>
+    </section>
+    <section class="channel-banner">
+        <div class="box">
+            <div class="wrap">
+                <h2 class="title">资讯中心</h2>
+                <div class="en">Newscenter</div>
+            </div>
+            <div class="channel-menu">
+                <div class="wrap fix">
+                    <ul class="fix">
+                        <li class="now">
+                            <a href="newscenter.html">
+                                <i class="bico">
+								<img src="images/1d5d9011aa0741aeb8d27e9d4b3224c81.png" alt=""> 
+								企业新闻
+							</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="newscenter1.html">
+                                <i class="bico">
+								<img src="images/ba4cef4cc88942fca5287fd7791745341.png" alt=""> 行业新闻
+							</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="newscenter2.html">
+                                <i class="bico">
+								<img src="images/93fcb8eaa26241ccabb98cbef4b67f631.png" alt="">
+								影视资讯
+							</i>
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+    </section>
+     
+   <div class="wrap fix"> 
+    <!--right--> 
+    <div class="channel_right"> 
+     <!--新闻搜索--> 
+     <div class="inewsSearch"> 
+      <div class="sec_hd"> 
+       <strong class="n">新闻搜索</strong> 
+      </div> 
+      <div class="sec_bd"> 
+       <form name="newsForm" method="post" action="/news/news_search_list.jsp"> 
+        <div class="nselect year"> 
+         <font class="ms">*</font> 
+         <select style="display: none;" class="newsYear c_select" id="newsYear" name="select1"> <option disabled="">选择年份</option> <option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option></select><span class="select-ui-choose select-ui-choose-ncb newsYear c_select"><span class="_txt">2016</span><span class="_arrow"><i class="arr"></i></span></span> 
+        </div> 
+        <div class="nselect month"> 
+         <font class="ms">*</font> 
+         <select style="display: none;" class="newsMonth c_select" id="newsMonth" name="select2"> <option disabled="">月</option> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select><span class="select-ui-choose select-ui-choose-ncb newsMonth c_select"><span class="_txt">1</span><span class="_arrow"><i class="arr"></i></span></span> 
+        </div> 
+        <div class="nselect day"> 
+         <font class="ms">*</font> 
+         <select style="display: none;" class="newsDay c_select" id="newsDay" name="select3"> <option disabled="">日</option> <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select><span class="select-ui-choose select-ui-choose-ncb newsDay c_select"><span class="_txt">1</span><span class="_arrow"><i class="arr"></i></span></span> 
+        </div> 
+        <div class="nInput"> 
+         <input placeholder="输入关键词" name="keywords" maxlength="20" type="text"> 
+        </div> 
+        <div class="nBtn"> 
+         <a href="javascript:;" id="newsSubmit" class="com_btn submitBtn">搜索</a> 
+        </div> 
+       </form> 
+      </div> 
+     </div> 
+     <!--新闻搜索 end--> 
+    </div> 
+    <!--right end--> 
+    <!--left--> 
+    <div class="channel_left">
+       
+        <div class="news_list">
+          <ul class="fix" id="news_list">
+           
+            <li>
+              <a href="303965.htm" title="辽河油田来我院对泥浆不落地系统进行验审" target="_blank">
+                <div class="_time">
+                  <span class="_year">2016</span>
+                  05-17
+                </div>
+                <h2 class="_t">辽河油田来我院对泥浆不落地系统进行验审</h2>
+                <div class="_text">　　5月17日上午，辽河油田来到我院对泥浆不落地系统进行检验审核，院长戴克文亲自陪同甲方一行人前往厂房</div>
+              </a>
+            </li>
+            
+            <li>
+              <a href="303963.htm" title="俄罗斯厂商来访" target="_blank">
+                <div class="_time">
+                  <span class="_year">2016</span>
+                  05-16
+                </div>
+                <h2 class="_t">俄罗斯厂商来访</h2>
+                <div class="_text">　　5月16日，俄罗斯厂商来到我院对陆地钻机系列产品进行实地考察，院长戴克文热情接待了远道而来的客人。</div>
+              </a>
+            </li>
+            
+            <li>
+              <a href="302162.htm" title="盘锦市政协主席莅临我院视察工作" target="_blank">
+                <div class="_time">
+                  <span class="_year">2016</span>
+                  05-12
+                </div>
+                <h2 class="_t">盘锦市政协主席莅临我院视察工作</h2>
+                <div class="_text">　　5月12日，盘锦市政协主席刘家升莅临我院视察工作，院长戴克文热情接见并陪同视察。 　　刘主席首先参观</div>
+              </a>
+            </li>
+            
+            <li>
+              <a href="302102.htm" title="工信部科技司副司长卢希来我院参观调研" target="_blank">
+                <div class="_time">
+                  <span class="_year">2016</span>
+                  05-11
+                </div>
+                <h2 class="_t">工信部科技司副司长卢希来我院参观调研</h2>
+                <div class="_text">　　5月11日，工信部科技司副司长卢希一行六人前来我院调研，省经信委副主任来鹤，盘锦市副市长周英俊等人</div>
+              </a>
+            </li>
+            
+            <li>
+              <a href="301626.htm" title="省科技厅厅长刘晓东莅临我院调研工作" target="_blank">
+                <div class="_time">
+                  <span class="_year">2016</span>
+                  05-03
+                </div>
+                <h2 class="_t">省科技厅厅长刘晓东莅临我院调研工作</h2>
+                <div class="_text">　　5月3日下午，省科技厅厅长刘晓东来到辽宁陆海石油装备研究院指导视察。院长戴克文，总工程师张晓军进行</div>
+              </a>
+            </li>
+            
+            <li>
+              <a href="300539.htm" title="辽宁省组织部非公党建工作处来我院参观调研" target="_blank">
+                <div class="_time">
+                  <span class="_year">2016</span>
+                  04-20
+                </div>
+                <h2 class="_t">辽宁省组织部非公党建工作处来我院参观调研</h2>
+                <div class="_text">　　2016年4月20日，辽宁省组织部非公党建工作处副处长柴志伟一行3人对我们党建工作进行调研，院长戴克文、</div>
+              </a>
+            </li>
+            
+          </ul>
+          <div style="display: block;" class="short_paging hide"><span class="_more">加载更多…</span></div>
+
+        </div>  
+    </div> 
+    <!--left end--> 
+   </div> 
+
+    <!-- 底部 -->
+    <footer class="pageFooter fix" style="margin-top: 20px;">
+        <div class="foot01">
+            <div class="wrap">
+                <ul class="fix">
+                    <li class="li1">
+                        <h2>联系我们</h2>
+                        <dl>
+                            <dt>
+                                <i class="ico"></i>
+                            </dt>
+                            <dd>
+                                总机：0427-3293318
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>
+                                <i class="ico ico2"></i>
+                            </dt>
+                            <dd>
+                                传真：0427-3293318
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>
+                                <i class="ico ico3"></i>
+                            </dt>
+                            <dd>
+                                售后：0427-3293318
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>
+                                <i class="ico ico4"></i>
+                            </dt>
+                            <dd>
+                                邮箱：lpei@lpei.com.cn
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>
+                                <i class="ico ico5"></i>
+                            </dt>
+                            <dd>
+                                地址：辽宁省盘锦市兴隆台区高新技术产业园公园街
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="li2">
+                        <h2>关于陆海</h2>
+                        <p>辽宁陆海石油装备研究院有限公司，面向全球提供一流的石油钻采设备、海洋工程、船舶制造和钻井平台等工程设备的技术研发、技术支持和技术服务等业务，是石油装备研发领域的高新技术企业。</p>
+                        <div class="share">
+                            <a href="#" class="weix" title="关注微信公共平台"></a>
+                            <a href="#" class="qq" title="分享到qq好友"></a>
+                            <a href="#" class="sina" title="分享到新浪微博"></a>
+                        </div>
+                    </li>
+                    <li class="daoh li3">
+                        <h2>导航</h2>
+                        <ul class="fix">
+                            <li><a href="#">- 企业介绍</a></li>
+                            <li><a href="#">- 研发设计</a></li>
+                            <li><a href="#">- 产品中心</a></li>
+                            <li><a href="#">- 工程技术服务</a></li>
+                            <li><a href="#">- 咨询中心</a></li>
+                            <li><a href="#">- 人力资源</a></li>
+                            <li><a href="#">- 工程备件</a></li>
+                            <li><a href="#">- 企业邮箱</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="foot02">
+            <div class="wrap fix">
+                <div class="copyRight">
+                    &copy; 2016 <a href="#">辽宁陆海石油装备研究院有限公司</a> All rights reserved. | <a href="#">  辽ICP备13013171号-2 </a>
+                </div>
+                <div class="author">
+                    <a href="#">捷瑞数字</a> 制作维护
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- 侧边固定导航条 -->
+    <div class="fixed-right">
+        <ul>
+            <li>
+                <a href="#" class="con">
+                    <span class="contact contact1"></span>
+                    <div class="text">在线客服</div>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="con">
+                    <span class="contact contact2"></span>
+                    <div class="text">0427-3293318</div>
+                </a>
+            </li>
+            <li>
+                <a href="#top">
+                    <span>∧</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
